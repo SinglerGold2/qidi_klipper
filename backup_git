@@ -1,0 +1,13 @@
+#!/bin/bash
+cd /home/mks/printer_data/config || exit 1
+
+# Alles ins Staging übernehmen
+git add -A
+
+# Commit nur, wenn es Änderungen gibt
+if ! git diff --cached --quiet; then
+    git commit -m "Auto-backup $(date '+%Y-%m-%d %H:%M:%S')"
+fi
+
+# Push (Upstream ist schon gesetzt)
+git push
