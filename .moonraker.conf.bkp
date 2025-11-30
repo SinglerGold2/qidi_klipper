@@ -65,9 +65,10 @@ info_tags =
 
 [update_manager timelapse]
 type = git_repo
+primary_branch = main
 path = ~/moonraker-timelapse
 origin = https://github.com/mainsail-crew/moonraker-timelapse.git
-primary_branch = main
+managed_services = klipper moonraker
 
 [update_manager klipper-backup]
 type = git_repo
