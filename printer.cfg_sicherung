@@ -98,10 +98,10 @@ default_type: echo
 # Adaptive_Mesh
 #####################################################################
 
-#[include KAMP/KAMP_Settings.cfg] 
-#[include KAMP/Adaptive_Meshing.cfg]
-#[include KAMP/Line_Purge.cfg] 
-#[include KAMP/Smart_Park.cfg]
+[include KAMP/KAMP_Settings.cfg] 
+[include KAMP/Adaptive_Meshing.cfg]
+[include KAMP/Line_Purge.cfg] 
+[include KAMP/Smart_Park.cfg]
 
 
 #####################################################################
@@ -130,7 +130,7 @@ default_type: echo
 #spi_software_miso_pin: Toolhead:gpio12
 #axes_map: -x, z, -y
 
-#[input_shaper]
+[input_shaper]
 #shaper_type_x: mzv
 #shaper_freq_x: 57.6
 #shaper_type_y: mzv
@@ -140,7 +140,6 @@ default_type: echo
 #####################################################################
 # Hotend
 #####################################################################
-
 #[extruder]
 #step_pin: Toolhead:gpio5
 #dir_pin: Toolhead:gpio4
@@ -242,7 +241,17 @@ heating_gain: 1
 #####################################################################
 #!# Pay attention to this section and compare it with your stock backup config
 
-
+#[probe]
+#pin: ^!Toolhead:gpio21
+#x_offset: 28
+#y_offset: 4.4
+#z_offset: 1.549
+#speed: 5
+#samples: 2
+#samples_result: average
+#sample_retract_dist: 3.0
+#samples_tolerance: 0.08
+#samples_tolerance_retries:3
 
 
 
@@ -456,11 +465,10 @@ enable_pin: !PC11
 microsteps: 16
 rotation_distance: 8
 full_steps_per_rotation: 200
-endstop_pin: ^PA99
+endstop_pin: tmc2209_stepper_z:virtual_endstop
+#endstop_pin: probe:z_virtual_endstop
 position_max: 322
 position_min: -2
-position_endstop: 0
-
 homing_speed: 10
 homing_retract_dist: 8.0
 second_homing_speed: 5
@@ -539,6 +547,11 @@ screw4_name: rear left screw
 #*# shaper_type_y = mzv
 #*# shaper_freq_y = 42.4
 #*#
+#*# [extruder]
+#*# control = pid
+#*# pid_kp = 47.226
+#*# pid_ki = 7.155
+#*# pid_kd = 77.922
 #*#
 #*# [bed_mesh default]
 #*# version = 1
@@ -563,4 +576,5 @@ screw4_name: rear left screw
 #*# min_y = 10.0
 #*# max_y = 314.96
 #*#
-
+#*# [probe]
+#*# z_offset = 0.765
